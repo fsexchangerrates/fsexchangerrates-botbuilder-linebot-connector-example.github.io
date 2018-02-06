@@ -83,11 +83,14 @@
             [
               "line-serverless-example",
               "dev",
-              "us-east-1",
+              "ap-northeast-1",
               "lambdaRole"
             ]
           ]
-        }
+        },
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+        ]
       }
     },
     "LineLambdaFunction": {
@@ -97,7 +100,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/line-serverless-example/dev/1517802099552-2018-02-05T03:41:39.552Z/line-serverless-example.zip"
+          "S3Key": "serverless/line-serverless-example/dev/1517935418115-2018-02-06T16:43:38.115Z/line-serverless-example.zip"
         },
         "FunctionName": "line-serverless-example-dev-line",
         "Handler": "handler.line",
@@ -109,21 +112,29 @@
           ]
         },
         "Runtime": "nodejs6.10",
-        "Timeout": 6
+        "Timeout": 6,
+        "VpcConfig": {
+          "SecurityGroupIds": [
+            "sg-db38a1a2"
+          ],
+          "SubnetIds": [
+            "subnet-44e59e0d"
+          ]
+        }
       },
       "DependsOn": [
         "LineLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "LineLambdaVersionArVu0Kse7iwDOZ4yydOlZp4KqqcFtr21hVhjzNLzjJw": {
+    "LineLambdaVersionsMDTDH9ZeIuFJjxN9Q89CUGcB01io25MWunXklePI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LineLambdaFunction"
         },
-        "CodeSha256": "cEreaBbmonA9TbKAuqruU4MVHOSfCYHQddN8FRGNY0I="
+        "CodeSha256": "cU6Jie6VDaLNmzC0jPlA1QIQPNtUL94o4g323gKT79A="
       }
     },
     "ApiGatewayRestApi": {
@@ -191,7 +202,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1517802099580": {
+    "ApiGatewayDeployment1517935418153": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -246,7 +257,7 @@
     "LineLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LineLambdaVersionArVu0Kse7iwDOZ4yydOlZp4KqqcFtr21hVhjzNLzjJw"
+        "Ref": "LineLambdaVersionsMDTDH9ZeIuFJjxN9Q89CUGcB01io25MWunXklePI"
       }
     },
     "ServiceEndpoint": {
@@ -259,7 +270,7 @@
             {
               "Ref": "ApiGatewayRestApi"
             },
-            ".execute-api.us-east-1.amazonaws.com/dev"
+            ".execute-api.ap-northeast-1.amazonaws.com/dev"
           ]
         ]
       }

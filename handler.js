@@ -13,10 +13,14 @@ var connector = new botbuilder_linebot_connector_1.LineConnector({
 // var connector = new builder.ConsoleConnector().listen();
 var bot = new builder.UniversalBot(connector)
     .set("storage", new botbuilder_mongodb_storage_1.MongoDbStorage({
-    DatabaseName: "abc123456",
+    DatabaseName: "admin",
     collectionName: "botState",
-    mongoIp: "127.0.0.1",
+    mongoIp: "10.0.31.18",
     mongoPort: "27017",
+    // mongoIp: "ds125578.mlab.com",
+    // mongoPort: "255xx",
+    username: "adminadmin",
+    password: "adminadmin"
 }));
 bot.use(builder.Middleware.dialogVersion({ version: 3.0, resetCommand: /^reset/i }));
 bot.dialog("/", [
@@ -35,14 +39,14 @@ bot.dialog("/", [
 exports.line = function (event, context, cb) {
     console.log("line begin");
     connector.serverlessWebhock(event);
-    // const response = {
-    //     statusCode: 200,
-    //     body: JSON.stringify({
-    //         message: 'ok!',
-    //         input: event,
-    //     }),
-    // };
-    // cb(null, response);
+    var response = {
+        statusCode: 200,
+        body: JSON.stringify({
+            message: 'ok!',
+            input: event,
+        }),
+    };
+    cb(null, response);
 };
 // export const line: Handler = serverless(server); 
 //# sourceMappingURL=handler.js.map

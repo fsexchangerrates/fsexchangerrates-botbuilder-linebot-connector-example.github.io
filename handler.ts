@@ -18,14 +18,14 @@ var connector = new LineConnector({
 
 var bot = new builder.UniversalBot(connector)
     .set("storage", new MongoDbStorage({
-        DatabaseName: "abc123456",
+        DatabaseName: "admin",
         collectionName: "botState",
-        mongoIp: "127.0.0.1",
+        mongoIp: "10.0.31.18",
         mongoPort: "27017",
         // mongoIp: "ds125578.mlab.com",
         // mongoPort: "255xx",
-        // username: "myUserAdmin",
-        // password: "testtest123"
+        username: "adminadmin",
+        password: "adminadmin"
     }));
 
 
@@ -53,14 +53,14 @@ bot.dialog("/", [
 export const line: Handler = (event: APIGatewayEvent, context: Context, cb: Callback) => {
     console.log("line begin")
     connector.serverlessWebhock(event)
-    // const response = {
-    //     statusCode: 200,
-    //     body: JSON.stringify({
-    //         message: 'ok!',
-    //         input: event,
-    //     }),
-    // };
-    // cb(null, response);
+    const response = {
+        statusCode: 200,
+        body: JSON.stringify({
+            message: 'ok!',
+            input: event,
+        }),
+    };
+    cb(null, response);
 }
 
 
