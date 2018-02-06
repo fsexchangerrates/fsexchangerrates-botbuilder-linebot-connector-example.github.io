@@ -12,7 +12,7 @@ server.listen(process.env.port || process.env.PORT || 3980, function () {
 
 var connector = new LineConnector({
     hasPushApi: false, //you to pay for push api >.,<
-    // your line
+    // your linet
     channelId: process.env.channelId || "",
     channelSecret: process.env.channelSecret || "",
     channelAccessToken: process.env.channelAccessToken || ""

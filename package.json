@@ -6,7 +6,9 @@
   "dependencies": {
     "aws-lambda": "^0.1.2",
     "botbuilder-linebot-connector": "^2.1",
+    "botbuilder-mongodb-storage": "0.0.1",
     "express": "^4.16.2",
+    "mongodb": "^2.2.34",
     "serverless-offline": "^3.16.0",
     "ts-loader": "^3.4.0"
   },
